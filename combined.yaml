@@ -1,0 +1,1078 @@
+---
+name: FallbackIntent
+identifier: FALLBCKINT
+description: Default intent when no other intent matches
+parentIntentSignature: AMAZON.FallbackIntent
+sampleUtterances: null
+intentConfirmationSetting: null
+intentClosingSetting: null
+initialResponseSetting:
+  conditional: null
+  codeHook:
+    isActive: true
+    enableCodeHookInvocation: true
+    invocationLabel: null
+    postCodeHookSpecification:
+      failureResponse: null
+      failureNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      failureConditional: null
+      successResponse: null
+      successNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      successConditional: null
+      timeoutResponse: null
+      timeoutNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      timeoutConditional: null
+  nextStep:
+    sessionAttributes: null
+    intent: null
+    dialogAction:
+      type: InvokeDialogCodeHook
+      slotToElicit: null
+      suppressNextMessage: null
+      intentsInScope: null
+  initialResponse: null
+inputContexts: null
+outputContexts: null
+kendraConfiguration: null
+qnAIntentConfiguration: null
+bedrockAgentIntentConfiguration: null
+qInConnectIntentConfiguration: null
+dialogCodeHook: null
+fulfillmentCodeHook: null
+slotPriorities: []
+---
+name: Payment
+version: DRAFT
+description: This banking bot will be used to handle payment-related tasks such as making a payment, reading payment history, adding or managing external accounts, and scheduling or canceling payments. The bot is designed to recognize customer intents even when utterances include informal or gibberish prefixes (e.g., “Oh god I want to make a payment”), by intelligently focusing on the core intent.
+identifier: D47NVQTR0B
+errorLogSettings:
+  enabled: true
+dataPrivacy:
+  childDirected: false
+idleSessionTTLInSeconds: 300
+---
+name: English (US)
+identifier: en_US
+version: null
+description: This locale is configured for English (United States) speakers. It supports natural, conversational language and understands common U.S. banking terminology. The bot is trained to recognize varied customer phrases, including informal speech or filler words, ensuring smooth and accurate interpretation of payment-related intents.
+voiceSettings:
+  voiceId: Joanna
+  engine: neural
+  speechFoundationModel: null
+nluConfidenceThreshold: 0.4
+generativeAISettings:
+  buildtimeSettings:
+    descriptiveBotBuilderSpecification:
+      enabled: false
+      bedrockModelSpecification:
+        modelArn: arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2
+        customPrompt: null
+        bedrockGuardrailConfiguration: null
+        bedrockTraceStatus: null
+    sampleUtteranceGenerationSpecification:
+      enabled: false
+      bedrockModelSpecification:
+        modelArn: arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-v2
+        customPrompt: null
+        bedrockGuardrailConfiguration: null
+        bedrockTraceStatus: null
+  runtimeSettings:
+    slotResolutionImprovementSpecification:
+      enabled: false
+      bedrockModelSpecification:
+        modelArn: arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0
+        customPrompt: null
+        bedrockGuardrailConfiguration: null
+        bedrockTraceStatus: null
+    nluImprovementSpecification:
+      enabled: true
+---
+name: DigitSlotType
+identifier: 5SH9YOKWCA
+description: |-
+  This slot is used to capture single-digit DTMF (Dual-tone multi-frequency) inputs from the customer, specifically the digits 1 through 9. It is typically used in voice interactions where customers are prompted to press a number on their phone keypad to select an option or provide input.
+
+  The slot is configured to accept only valid DTMF tones and will ignore invalid entries such as *, or #. It is designed to work with natural voice or keypad input, supporting multi-modal interaction for IVR-like workflows.
+slotTypeValues:
+- synonyms: null
+  sampleValue:
+    value: '1'
+- synonyms: null
+  sampleValue:
+    value: '2'
+- synonyms: null
+  sampleValue:
+    value: '3'
+- synonyms: null
+  sampleValue:
+    value: '4'
+- synonyms: null
+  sampleValue:
+    value: '5'
+- synonyms: null
+  sampleValue:
+    value: '6'
+- synonyms: null
+  sampleValue:
+    value: '7'
+- synonyms: null
+  sampleValue:
+    value: '8'
+- synonyms: null
+  sampleValue:
+    value: '9'
+- synonyms: null
+  sampleValue:
+    value: '0'
+parentSlotTypeSignature: null
+valueSelectionSetting:
+  resolutionStrategy: TOP_RESOLUTION
+  advancedRecognitionSetting: null
+  regexFilter: null
+---
+name: AddExternalBankAccount
+identifier: KIWJJWH3G1
+description: |-
+  This intent is used when a customer wants to add an external bank account to their profile. The account will be used as a funding source for future payments.
+
+  Customers may express this intent using natural or conversational language, including utterances with gibberish or emotional prefixes, such as:
+
+  “I want to add an external account for making a payment”
+  “Oh god, help me add my bank account”
+  “Ugh, I need to link a new account”
+
+  The intent is designed to extract the key action — adding or linking an external bank account — regardless of how it's phrased.
+parentIntentSignature: null
+sampleUtterances: null
+intentConfirmationSetting: null
+intentClosingSetting: null
+initialResponseSetting:
+  conditional: null
+  codeHook:
+    isActive: true
+    enableCodeHookInvocation: true
+    invocationLabel: null
+    postCodeHookSpecification:
+      failureResponse: null
+      failureNextStep:
+        sessionAttributes: null
+        intent:
+          name: null
+          slots: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      failureConditional: null
+      successResponse: null
+      successNextStep:
+        sessionAttributes: null
+        intent:
+          name: null
+          slots: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      successConditional: null
+      timeoutResponse: null
+      timeoutNextStep:
+        sessionAttributes: null
+        intent:
+          name: null
+          slots: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      timeoutConditional: null
+  nextStep:
+    sessionAttributes: null
+    intent:
+      name: null
+      slots: null
+    dialogAction:
+      type: InvokeDialogCodeHook
+      slotToElicit: null
+      suppressNextMessage: null
+      intentsInScope: null
+  initialResponse: null
+inputContexts: null
+outputContexts: null
+kendraConfiguration: null
+qnAIntentConfiguration: null
+bedrockAgentIntentConfiguration: null
+qInConnectIntentConfiguration: null
+dialogCodeHook: null
+fulfillmentCodeHook: null
+slotPriorities: []
+---
+name: Confirmation
+identifier: VYSQZWSEQ1
+description: null
+slotTypeName: AMAZON.Confirmation
+obfuscationSetting: null
+valueElicitationSetting:
+  slotCaptureSetting:
+    codeHook: null
+    captureResponse: null
+    captureNextStep:
+      sessionAttributes: null
+      intent:
+        name: null
+        slots: null
+      dialogAction:
+        type: EndConversation
+        slotToElicit: null
+        suppressNextMessage: null
+        intentsInScope: null
+    captureConditional: null
+    failureResponse: null
+    failureNextStep:
+      sessionAttributes: null
+      intent:
+        name: FallbackIntent
+        slots: null
+      dialogAction:
+        type: StartIntent
+        slotToElicit: null
+        suppressNextMessage: null
+        intentsInScope: null
+    failureConditional: null
+    elicitationCodeHook:
+      enableCodeHookInvocation: true
+      invocationLabel: null
+  slotConstraint: Required
+  promptSpecification:
+    messageGroupsList:
+    - message:
+        ssmlMessage: null
+        customPayload: null
+        plainTextMessage:
+          value: Please say yes or no
+        imageResponseCard: null
+      variations: null
+    maxRetries: 4
+    allowInterrupt: true
+    messageSelectionStrategy: Random
+    promptAttemptsSpecification:
+      Retry4:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Initial:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry3:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry1:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry2:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+  defaultValueSpecification: null
+  sampleUtterances: null
+  waitAndContinueSpecification: null
+multipleValuesSetting: null
+---
+name: FallbackIntent
+identifier: FALLBCKINT
+description: Default intent when no other intent matches
+parentIntentSignature: AMAZON.FallbackIntent
+sampleUtterances: null
+intentConfirmationSetting: null
+intentClosingSetting: null
+initialResponseSetting:
+  conditional: null
+  codeHook:
+    isActive: true
+    enableCodeHookInvocation: true
+    invocationLabel: null
+    postCodeHookSpecification:
+      failureResponse: null
+      failureNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      failureConditional: null
+      successResponse: null
+      successNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      successConditional: null
+      timeoutResponse: null
+      timeoutNextStep:
+        sessionAttributes: null
+        intent: null
+        dialogAction:
+          type: EndConversation
+          slotToElicit: null
+          suppressNextMessage: null
+          intentsInScope: null
+      timeoutConditional: null
+  nextStep:
+    sessionAttributes: null
+    intent: null
+    dialogAction:
+      type: InvokeDialogCodeHook
+      slotToElicit: null
+      suppressNextMessage: null
+      intentsInScope: null
+  initialResponse: null
+inputContexts: null
+outputContexts: null
+kendraConfiguration: null
+qnAIntentConfiguration: null
+bedrockAgentIntentConfiguration: null
+qInConnectIntentConfiguration: null
+dialogCodeHook: null
+fulfillmentCodeHook: null
+slotPriorities: []
+---
+name: DateType
+identifier: 4UOYEYILU3
+description: null
+slotTypeName: DateType
+obfuscationSetting: null
+valueElicitationSetting:
+  slotCaptureSetting:
+    codeHook: null
+    captureResponse: null
+    captureNextStep:
+      sessionAttributes: null
+      intent:
+        name: null
+        slots: null
+      dialogAction:
+        type: ElicitSlot
+        slotToElicit: Confirmation
+        suppressNextMessage: null
+        intentsInScope: null
+    captureConditional: null
+    failureResponse: null
+    failureNextStep:
+      sessionAttributes: null
+      intent:
+        name: FallbackIntent
+        slots: null
+      dialogAction:
+        type: StartIntent
+        slotToElicit: null
+        suppressNextMessage: null
+        intentsInScope: null
+    failureConditional: null
+    elicitationCodeHook:
+      enableCodeHookInvocation: true
+      invocationLabel: null
+  slotConstraint: Required
+  promptSpecification:
+    messageGroupsList:
+    - message:
+        ssmlMessage: null
+        customPayload: null
+        plainTextMessage:
+          value: What date would you like to make a payment on? for example you can say today, tomorrow, etc.
+        imageResponseCard: null
+      variations: null
+    maxRetries: 4
+    allowInterrupt: true
+    messageSelectionStrategy: Random
+    promptAttemptsSpecification:
+      Retry4:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Initial:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry3:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry1:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry2:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+  defaultValueSpecification: null
+  sampleUtterances: null
+  waitAndContinueSpecification: null
+multipleValuesSetting: null
+---
+metaData:
+  schemaVersion: '1'
+  fileFormat: LexJson
+  resourceType: BOT
+---
+name: AmountType
+identifier: CVYUUNHNTW
+description: |-
+  This custom slot type is used to capture the type of payment amount a customer wants to make. It includes predefined values such as Minimum Due, Remaining Minimum Due, Past Due, and similar terms commonly used in billing contexts.
+
+  The slot is designed to recognize these values even when customer utterances include gibberish or emotional prefixes (e.g., “Oh man, I want to pay the minimum due”), by focusing on the core phrase that matches a valid slot type value. This helps ensure accurate intent fulfillment while supporting natural, conversational input.
+slotTypeValues:
+- synonyms:
+  - value: Current Amount
+  - value: Current Balance
+  - value: Current Due
+  - value: Current Balance Amount
+  sampleValue:
+    value: CurrentBalance
+- synonyms:
+  - value: Minimum due
+  - value: Minimum
+  - value: Min Due
+  - value: Minimum Payment
+  - value: Minimum Balance
+  sampleValue:
+    value: MinimumDue
+- synonyms:
+  - value: Remaining Current Balance
+  sampleValue:
+    value: RemainingCurrentBalance
+- synonyms:
+  - value: Remining Minimum Due
+  sampleValue:
+    value: RemainingMinimumDue
+- synonyms:
+  - value: Remaining Last  Statement Balance
+  sampleValue:
+    value: RemainingLastStatementBalance
+- synonyms:
+  - value: Last Statement Balance
+  sampleValue:
+    value: LastStatementBalance
+- synonyms:
+  - value: Past Due
+  sampleValue:
+    value: PastDue
+- synonyms:
+  - value: Remaining Past Due
+  sampleValue:
+    value: RemainingPastDue
+- synonyms:
+  - value: Furthest  Past Due
+  sampleValue:
+    value: FurthestPastDue
+- synonyms:
+  - value: Remaining Furthest Past Due
+  sampleValue:
+    value: RemainingFurthestPastDue
+- synonyms:
+  - value: Different Amount
+  sampleValue:
+    value: DifferntAmount
+parentSlotTypeSignature: null
+valueSelectionSetting:
+  resolutionStrategy: TOP_RESOLUTION
+  advancedRecognitionSetting: null
+  regexFilter: null
+---
+name: AmountType
+identifier: W1RLC20XN9
+description: null
+slotTypeName: AmountType
+obfuscationSetting: null
+valueElicitationSetting:
+  slotCaptureSetting:
+    codeHook: null
+    captureResponse: null
+    captureNextStep:
+      sessionAttributes: null
+      intent:
+        name: null
+        slots: null
+      dialogAction:
+        type: ElicitSlot
+        slotToElicit: CurrencyAmount
+        suppressNextMessage: null
+        intentsInScope: null
+    captureConditional: null
+    failureResponse: null
+    failureNextStep:
+      sessionAttributes: null
+      intent:
+        name: FallbackIntent
+        slots: null
+      dialogAction:
+        type: StartIntent
+        slotToElicit: null
+        suppressNextMessage: null
+        intentsInScope: null
+    failureConditional: null
+    elicitationCodeHook:
+      enableCodeHookInvocation: true
+      invocationLabel: null
+  slotConstraint: Required
+  promptSpecification:
+    messageGroupsList:
+    - message:
+        ssmlMessage: null
+        customPayload: null
+        plainTextMessage:
+          value: What type of amount would you like to pay? For example you can say Minimum due, past due
+        imageResponseCard: null
+      variations: null
+    maxRetries: 4
+    allowInterrupt: true
+    messageSelectionStrategy: Random
+    promptAttemptsSpecification:
+      Retry4:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Initial:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry3:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry1:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry2:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+  defaultValueSpecification: null
+  sampleUtterances: null
+  waitAndContinueSpecification: null
+multipleValuesSetting: null
+---
+name: DateType
+identifier: HITBIFZJYT
+description: |-
+  This custom slot type is used to capture the intended payment date from the customer. It supports relative and conversational date expressions such as today, tomorrow, day after tomorrow, next week, end of the month, and similar phrases.
+
+  The slot is built to recognize the relevant date context even when customer inputs include gibberish or emotional prefixes (e.g., “Ugh, let’s do it tomorrow” or “Okay, I’ll pay at the end of the month”), ensuring a smooth and natural user experience.
+slotTypeValues:
+- synonyms:
+  - value: this day
+  - value: today
+  - value: now
+  sampleValue:
+    value: Today
+- synonyms:
+  - value: next day
+  - value: tomorrow
+  - value: day after today
+  sampleValue:
+    value: Tomorrow
+- synonyms:
+  - value: Different Date
+  - value: Another day
+  - value: Other day
+  - value: Some other day
+  sampleValue:
+    value: DifferentDate
+- synonyms:
+  - value: Due date
+  - value: deadline
+  sampleValue:
+    value: DueDate
+parentSlotTypeSignature: null
+valueSelectionSetting:
+  resolutionStrategy: TOP_RESOLUTION
+  advancedRecognitionSetting: null
+  regexFilter: null
+---
+name: CurrencyAmount
+identifier: 5ICEE0VNIZ
+description: null
+slotTypeName: AMAZON.Currency
+obfuscationSetting: null
+valueElicitationSetting:
+  slotCaptureSetting:
+    codeHook: null
+    captureResponse: null
+    captureNextStep:
+      sessionAttributes: null
+      intent:
+        name: null
+        slots: null
+      dialogAction:
+        type: ElicitSlot
+        slotToElicit: DateType
+        suppressNextMessage: null
+        intentsInScope: null
+    captureConditional: null
+    failureResponse: null
+    failureNextStep:
+      sessionAttributes: null
+      intent:
+        name: FallbackIntent
+        slots: null
+      dialogAction:
+        type: StartIntent
+        slotToElicit: null
+        suppressNextMessage: null
+        intentsInScope: null
+    failureConditional: null
+    elicitationCodeHook:
+      enableCodeHookInvocation: true
+      invocationLabel: null
+  slotConstraint: Required
+  promptSpecification:
+    messageGroupsList:
+    - message:
+        ssmlMessage: null
+        customPayload: null
+        plainTextMessage:
+          value: What amount would you like to pay?
+        imageResponseCard: null
+      variations: null
+    maxRetries: 4
+    allowInterrupt: true
+    messageSelectionStrategy: Random
+    promptAttemptsSpecification:
+      Retry4:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Initial:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry3:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry1:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry2:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+  defaultValueSpecification: null
+  sampleUtterances: null
+  waitAndContinueSpecification: null
+multipleValuesSetting: null
+---
+name: DTMFInput
+identifier: KD04NJEYU2
+description: null
+slotTypeName: DigitSlotType
+obfuscationSetting: null
+valueElicitationSetting:
+  slotCaptureSetting:
+    codeHook: null
+    captureResponse: null
+    captureNextStep: null
+    captureConditional: null
+    failureResponse: null
+    failureNextStep: null
+    failureConditional: null
+    elicitationCodeHook:
+      enableCodeHookInvocation: true
+      invocationLabel: null
+  slotConstraint: Optional
+  promptSpecification:
+    messageGroupsList:
+    - message:
+        ssmlMessage: null
+        customPayload: null
+        plainTextMessage:
+          value: Press DIgits on your Key pad to choose options?
+        imageResponseCard: null
+      variations: null
+    maxRetries: 4
+    allowInterrupt: true
+    messageSelectionStrategy: Random
+    promptAttemptsSpecification:
+      Retry4:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Initial:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry3:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry1:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+      Retry2:
+        textInputSpecification:
+          startTimeoutMs: 30000
+        allowedInputTypes:
+          allowAudioInput: true
+          allowDTMFInput: true
+        audioAndDTMFInputSpecification:
+          startTimeoutMs: 4000
+          audioSpecification:
+            endTimeoutMs: 640
+            maxLengthMs: 15000
+          dtmfSpecification:
+            maxLength: 513
+            endTimeoutMs: 5000
+            deletionCharacter: '*'
+            endCharacter: '#'
+        allowInterrupt: true
+  defaultValueSpecification: null
+  sampleUtterances: null
+  waitAndContinueSpecification: null
+multipleValuesSetting: null
